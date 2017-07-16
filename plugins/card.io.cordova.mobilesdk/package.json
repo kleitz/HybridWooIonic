@@ -1,0 +1,102 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "card.io.cordova.mobilesdk@2.1.0",
+        "scope": null,
+        "escapedName": "card.io.cordova.mobilesdk",
+        "name": "card.io.cordova.mobilesdk",
+        "rawSpec": "2.1.0",
+        "spec": "2.1.0",
+        "type": "version"
+      },
+      "C:\\Users\\DiogoFerraz\\Documents\\GitHub\\wooionic\\node_modules"
+    ]
+  ],
+  "_from": "card.io.cordova.mobilesdk@2.1.0",
+  "_id": "card.io.cordova.mobilesdk@2.1.0",
+  "_inCache": true,
+  "_location": "/card.io.cordova.mobilesdk",
+  "_nodeVersion": "5.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/card.io.cordova.mobilesdk-2.1.0.tgz_1474811646181_0.9013033048249781"
+  },
+  "_npmUser": {
+    "name": "paypal",
+    "email": "DL-PP-NODEJS-SDK@paypal.com"
+  },
+  "_npmVersion": "3.7.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "card.io.cordova.mobilesdk@2.1.0",
+    "scope": null,
+    "escapedName": "card.io.cordova.mobilesdk",
+    "name": "card.io.cordova.mobilesdk",
+    "rawSpec": "2.1.0",
+    "spec": "2.1.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/card.io.cordova.mobilesdk/-/card.io.cordova.mobilesdk-2.1.0.tgz",
+  "_shasum": "583b9306f6f28ab54cd9d2c89fc35ed93e851488",
+  "_shrinkwrap": null,
+  "_spec": "card.io.cordova.mobilesdk@2.1.0",
+  "_where": "C:\\Users\\DiogoFerraz\\Documents\\GitHub\\wooionic\\node_modules",
+  "author": {
+    "name": "card.io"
+  },
+  "bugs": {
+    "url": "https://github.com/card-io/card.io-Cordova-Plugin/issues"
+  },
+  "cordova": {
+    "id": "card.io.cordova.mobilesdk",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "This plugin allows to add card.io scanning capabilities to your application using card.io SDK Native library",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "583b9306f6f28ab54cd9d2c89fc35ed93e851488",
+    "tarball": "https://registry.npmjs.org/card.io.cordova.mobilesdk/-/card.io.cordova.mobilesdk-2.1.0.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "c4311e75cd531dc2375aa52fedb74f6998911b9d",
+  "homepage": "https://github.com/card-io/card.io-Cordova-Plugin#readme",
+  "keywords": [
+    "card.io",
+    "sdk",
+    "card-scanning",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT License, see LICENSE for details",
+  "maintainers": [
+    {
+      "name": "paypal",
+      "email": "DL-PP-NODEJS-SDK@paypal.com"
+    }
+  ],
+  "name": "card.io.cordova.mobilesdk",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/card-io/card.io-Cordova-Plugin.git"
+  },
+  "scripts": {},
+  "version": "2.1.0"
+}
