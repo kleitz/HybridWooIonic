@@ -23,14 +23,14 @@
       </ion-card-title>
       <p [innerHTML] = "product.description"></p>
       <button ion-button icon-left block outline color="danger" (click) ="addToCart(product)">
-        <ion-icon name="basket"></ion-icon>Add to cart
+        <ion-icon name="basket"></ion-icon>Adiciona à lista
       </button>
     </ion-card-content>
   </ion-card>
   <ion-card *ngIf="product.attributes.length > 0">
     <ion-card-content>
       <ion-card-title>
-        Specifications
+        Caracteristicas
       </ion-card-title>
       <ion-grid>
         <ion-row *ngFor = "let att of product.attributes">
@@ -47,7 +47,7 @@
   <ion-card *ngIf="reviews.length > 0">
     <ion-card-content>
       <ion-card-title>
-        Reviews
+        Opniões sobre o produto
       </ion-card-title>
       <ion-grid>
         <ion-row *ngFor = "let review of reviews">

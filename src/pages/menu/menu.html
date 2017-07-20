@@ -7,9 +7,7 @@
 
   <ion-content>
     <ion-card class="card-background-page">
-        <img src="./assets/images/background.jpg" />
-        <div class="card-title"> WooIonic</div>
-        <div class="card-subtitle"> Keep Shopping</div>
+        <img src="./assets/images/logoWithBackground.png" />
     </ion-card>
     <ion-list>
       <ion-item *ngFor="let category of categories" text-wrap (click)="OpenCategoryPage(category)" menuClose>
@@ -17,38 +15,33 @@
         <h2>{{category.name}}</h2>
         <p>{{category.description}}</p>
       </ion-item>
-      <ion-item-divider color="danger">Account</ion-item-divider>
-      <ion-item (click)="openPage('signup')" menuClose *ngIf = "!loggedin">
+      <ion-item-divider style="background-color: rgb(0, 51, 153);"><span style="color:yellow;font-weight: bold;">Minha Conta</span></ion-item-divider>
+      <!--<ion-item (click)="openPage('signup')" menuClose *ngIf = "!loggedin">
         <ion-icon name="md-clipboard" item-left large></ion-icon>
         <h2>Sign Up</h2>
         <p>For a new account</p>
-      </ion-item>
+      </ion-item>-->
       <ion-item (click)="openPage('login')" menuClose *ngIf = "!loggedin">
         <ion-icon name="log-in" item-left large></ion-icon>
-        <h2>Login</h2>
-        <p>Using email and password</p>
+        <h2>Acessar conta</h2>
+        <p>Utilize o email e cnpj da empresa </p>
       </ion-item>
       <ion-item *ngIf = "loggedin" menuClose>
         <ion-icon name="contact" item-left large></ion-icon>
         <h2>{{(this.user.firstname == '') ? this.user.username : this.user.firstname || "" }}</h2>
-        <p>Welcome</p>
+        <p>Seja bem vindo!</p>
       </ion-item>
       <ion-item (click)="openPage('cart')" *ngIf = "loggedin" menuClose>
         <ion-icon name="cart" item-left large></ion-icon>
-        <h2>Your Cart</h2>
-        <p>Check items in your cart</p>
+        <h2>Lista de produtos</h2>
+        <p>Veja sua lista de produtos</p>
       </ion-item>
       <ion-item (click)="openPage('logout')" *ngIf = "loggedin" menuClose>
         <ion-icon name="log-out" item-left large></ion-icon>
-        <h2>Logout</h2>
-        <p>of your Account</p>
+        <h2>Sair</h2>
+        <p>de sua conta</p>
       </ion-item>
-
-
-
-
     </ion-list>
   </ion-content>
-
 </ion-menu>
 <ion-nav #content [root]="homePage"></ion-nav>

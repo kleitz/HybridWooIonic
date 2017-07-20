@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
 import { Storage } from '@ionic/storage';
 import { CartPage } from '../cart/cart';
 import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';
@@ -44,7 +43,7 @@ export class ProductDetailsPage {
 
         for(let i = 0; i < data.length; i++){
           if(product.id == data[i].product.id){
-            console.log("Product is already in the cart");
+            console.log("Produto já existe na lista de pedidos");
             let qty = data[i].qty;
             data[i].qty = qty + 1;
             data[i].amount = parseFloat(data[i].amount) + parseFloat(data[i].product.price);
@@ -60,10 +59,10 @@ export class ProductDetailsPage {
         }
       }
       this.storage.set("cart", data).then(()=>{
-        console.log("Cart updated");
+        console.log("Lista atualizada");
         console.log(data);
         this.toastCtrl.create({
-          message: "Cart updated",
+          message: "Lista atualizada",
           duration: 3000,
         }).present();
       })

@@ -4,7 +4,6 @@ import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { LoginPage } from '../login/login';
 import { CartPage } from '../cart/cart';
-import * as WC from 'woocommerce-api';
 import { ProductsByCategoryPage } from '../products-by-category/products-by-category';
 import { Storage } from '@ionic/storage';
 import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';

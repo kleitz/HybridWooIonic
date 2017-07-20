@@ -1,16 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Your Cart</ion-title>
+    <ion-title>Lista de produtos</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-card>
     <ion-grid>
       <ion-row>
-        <ion-col>Your cart description</ion-col>
+        <ion-col>Detalhes da lista de produtos</ion-col>
       </ion-row>
       <ion-row [hidden] = "!showEmptyCartMessage">
-        <ion-col>There aren't products in your cart!</ion-col>
+        <ion-col>Nenhum produto adicionado à lista!</ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
@@ -50,10 +50,10 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <button ion-button color="danger" outline block (click) = "closeModal()">Back</button>
+          <button ion-button color="danger" outline block (click) = "closeModal()">Continuar comprando</button>
         </ion-col>
         <ion-col>
-          <button ion-button color="danger" block (click) = "checkout()">Checkout</button> 
+          <button ion-button color="danger" block (click) = "checkout()">Enviar pedido</button>
         </ion-col>
       </ion-row>
     </ion-grid>

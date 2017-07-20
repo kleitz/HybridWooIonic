@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
 import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';
 
 @Component({
