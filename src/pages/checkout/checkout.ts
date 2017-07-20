@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
@@ -17,20 +17,23 @@ export class CheckoutPage {
   WooCommerce: any;
   userInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController, public payPal: PayPal, public toastCtrl: ToastController,private woocommerce: WooCommerceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController, public payPal: PayPal, public toastCtrl: ToastController,private woocommerce: WooCommerceProvider, public loadingCtrl: LoadingController) {
     this.newOrder = {};
     this.newOrder.billing_address = {};
     this.newOrder.shipping_address = {};
     this.billing_shipping_same = false;
 
     this.paymentMethods = [
-      {method_id:"bacs", method_title:"Direct Bank Transfer"},
-      {method_id:"cheque", method_title:"Cheque payment"},
-      {method_id:"cod", method_title:"Cash on delivery"},
+      {method_id:"cod", method_title:"Dinheiro"},
       {method_id:"paypal", method_title:"PayPal"}
     ];
 
     this.WooCommerce = this.woocommerce.initialize();
+
+    let loading = this.loadingCtrl.create({
+      content: 'Carregando...',
+      duration: 3000
+    }).present();
 
     this.storage.get("userLoginInfo").then((userLoginInfo) =>{
       this.userInfo = userLoginInfo.user;
