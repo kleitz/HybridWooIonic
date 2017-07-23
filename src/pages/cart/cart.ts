@@ -14,9 +14,12 @@ export class CartPage {
   cartItems: any[] = [];
   total: any;
   showEmptyCartMessage:boolean = false;
+  sumQty: any = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public viewCtrl: ViewController) {
     this.total = 0.0;
+    this.sumQty = 0;
+    
     this.storage.ready().then(()=>{
       this.storage.get("cart").then((data)=>{
         this.cartItems = data;
@@ -24,7 +27,8 @@ export class CartPage {
 
         if(this.cartItems.length > 0){
           this.cartItems.forEach((item, index) =>{
-            this.total = this.total +(item.product.price * item.qty)
+            this.total = this.total + (item.product.price * item.qty);
+            this.sumQty= Number(this.sumQty + item.qty);
           })
         }else{
           this.showEmptyCartMessage = true;
@@ -43,6 +47,7 @@ export class CartPage {
     this.cartItems.splice(i, 1);
     this.storage.set("cart", this.cartItems).then(()=>{
       this.total = this.total - (price * qty);
+      this.sumQty= Number(this.sumQty - qty);
     })
 
     if(this.cartItems.length == 0){

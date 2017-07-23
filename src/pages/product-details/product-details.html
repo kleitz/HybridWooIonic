@@ -22,8 +22,15 @@
         </ion-chip>
       </ion-card-title>
       <p [innerHTML] = "product.description"></p>
-      <button ion-button icon-left block outline color="danger" (click) ="addToCart(product)">
-        <ion-icon name="basket"></ion-icon>Adiciona à lista
+      <p><b>Quantidade disponível:</b> {{ product.stock_quantity }}</p>
+      <ion-list>
+        <ion-item>
+          <ion-label color="danger">Quantidade desejada</ion-label>
+          <ion-input type="number" [(ngModel)]="product.quantity"></ion-input>
+       </ion-item>
+      </ion-list>
+      <button ion-button icon-left block outline color="default" (click) ="addToCart(product)">
+        <ion-icon name="basket"></ion-icon>Adicionar à lista
       </button>
     </ion-card-content>
   </ion-card>

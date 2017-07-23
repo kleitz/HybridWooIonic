@@ -23,7 +23,7 @@ export class HomePage {
     this.WooCommerce = this.woocommerce.initialize();
 
     this.WooCommerce.getAsync("products").then((data)=>{
-      console.log(JSON.parse(data.body));
+      //console.log(JSON.parse(data.body).products);
       this.products = JSON.parse(data.body).products;
     },(err)=>{
       console.log(err)
@@ -51,7 +51,7 @@ export class HomePage {
     }
 
     this.WooCommerce.getAsync("products?page="+ this.page).then((data)=>{
-      console.log(JSON.parse(data.body));
+    //console.log(JSON.parse(data.body));
       this.moreProducts = this.moreProducts.concat(JSON.parse(data.body).products);
 
       if(event != null){
@@ -59,8 +59,8 @@ export class HomePage {
         if(JSON.parse(data.body).products.length < 10){
           event.enable(false);
           this.toastCtrl.create({
-            message:"No more products!",
-            duration: 5000
+            message:"Não existem mais produtos!",
+            duration: 3000
           }).present();
         }
       }

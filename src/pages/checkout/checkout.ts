@@ -30,7 +30,7 @@ export class CheckoutPage {
 
     this.WooCommerce = this.woocommerce.initialize();
 
-    let loading = this.loadingCtrl.create({
+    this.loadingCtrl.create({
       content: 'Carregando...',
       duration: 3000
     }).present();
