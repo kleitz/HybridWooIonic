@@ -26,7 +26,7 @@
         <h2>Acessar conta</h2>
         <p>Utilize o email e cnpj da empresa </p>
       </ion-item>
-      <ion-item *ngIf = "loggedin" menuClose>
+      <ion-item *ngIf = "loggedin" menuClose (click)="openPage('signup')">
         <ion-icon name="contact" item-left large></ion-icon>
         <h2>{{(this.user.firstname == '') ? this.user.username : this.user.firstname || "" }}</h2>
         <p>Seja bem vindo!</p>

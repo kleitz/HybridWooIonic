@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { WooCommerceProvider } from '../../providers/woocommerce/woocommerce';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-signup',
@@ -12,18 +13,40 @@ export class SignupPage {
   newUser: any = {};
   billing_shipping_same: boolean;
   WooCommerce: any;
+  editing: boolean;
+  userInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController, private woocommerce: WooCommerceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public storage: Storage, public toastCtrl: ToastController, public alertCtrl: AlertController, private woocommerce: WooCommerceProvider) {
 
     this.newUser.billing_address = {};
     this.newUser.shipping_address = {};
     this.billing_shipping_same = false;
 
     this.WooCommerce = this.woocommerce.initialize();
+
+    this.loadingCtrl.create({
+      content: 'Carregando dados...',
+      duration: 4000
+    }).present();
+
+    this.storage.ready().then(()=>{
+      this.storage.get("userLoginInfo").then((userLoginInfo) =>{
+        if(userLoginInfo != null){
+          this.userInfo = userLoginInfo.user;
+          //console.log(this.userInfo);
+          let email = userLoginInfo.user.email;
+          this.WooCommerce.getAsync("customers/email/"+email).then((data) =>{
+            this.newUser = JSON.parse(data.body).customer;
+          });
+          this.editing = true;
+        }else{
+          this.editing = false;
+        }
+      })});
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Signup');
+    //console.log('ionViewDidLoad Signup');
   }
 
   setBillingToShipping(){
@@ -117,30 +140,56 @@ export class SignupPage {
       if(this.billing_shipping_same){
         this.newUser.shipping_address = this.newUser.shipping_address;
       }
+      if(!this.editing){
+        this.WooCommerce.postAsync('customers', customerData).then( (data) => {
 
-      this.WooCommerce.postAsync('customers', customerData).then( (data) => {
+          let response = (JSON.parse(data.body));
 
-        let response = (JSON.parse(data.body));
+          if(response.customer){
+            this.alertCtrl.create({
+              title: "Conta criada",
+              message: "Sua conta foi criada com sucesso! Favor realizar login para seguir.",
+              buttons: [{
+                text: "Login",
+                handler: ()=> {
+                  //TODO
+                }
+              }]
+            }).present();
+          } else if(response.errors){
+            this.toastCtrl.create({
+              message: response.errors[0].message,
+              showCloseButton: true
+            }).present();
+          }
 
-        if(response.customer){
-          this.alertCtrl.create({
-            title: "Account Created",
-            message: "Your account has been created successfully! Please login to proceed.",
-            buttons: [{
-              text: "Login",
-              handler: ()=> {
-                //TODO
-              }
-            }]
-          }).present();
-        } else if(response.errors){
-          this.toastCtrl.create({
-            message: response.errors[0].message,
-            showCloseButton: true
-          }).present();
-        }
+        })
+      }else{
 
-      })
+        this.WooCommerce.putAsync('customers/'+this.userInfo.id, customerData).then( (data) => {
+
+          let response = (JSON.parse(data.body));
+
+          if(response.customer){
+            this.alertCtrl.create({
+              title: "Conta atualizada",
+              message: "Sua conta foi atualizada com sucesso!",
+              buttons: [{
+                text: "OK",
+                handler: ()=> {
+                  //TODO
+                }
+              }]
+            }).present();
+          } else if(response.errors){
+            this.toastCtrl.create({
+              message: response.errors[0].message,
+              showCloseButton: true
+            }).present();
+          }
+
+        })
+      }
 
     }
 

@@ -24,7 +24,7 @@ export class LoginPage {
 
   login(){
 
-    let loading = this.loadingCtrl.create({
+    this.loadingCtrl.create({
       content: 'Conectando...',
       duration: 4000
     }).present();
@@ -44,8 +44,8 @@ export class LoginPage {
 
       this.storage.set("userLoginInfo", response).then((data)=>{
         this.alertCtrl.create({
-          title:"Login Successfull",
-          message:"You have been logged in successfully",
+          title:"Conectado com sucesso",
+          message:"Você foi conectado no sistema com sucesso.",
           buttons:[{
             text:"OK",
             handler:()=> {
