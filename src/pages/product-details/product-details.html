@@ -25,8 +25,8 @@
       <p><b>Quantidade disponível:</b> {{ product.stock_quantity }}</p>
       <ion-list>
         <ion-item>
-          <ion-label color="danger">Quantidade desejada</ion-label>
-          <ion-input type="number" [(ngModel)]="product.quantity"></ion-input>
+          <ion-label style="font-size:14px;" color="danger">Quantidade desejada</ion-label>
+          <ion-input style="font-size:15px;" type="number" [(ngModel)]="product.quantity"></ion-input>
        </ion-item>
       </ion-list>
       <button ion-button icon-left block outline color="default" (click) ="addToCart(product)">

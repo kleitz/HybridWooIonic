@@ -29,18 +29,31 @@
   <ion-grid>
     <ion-card>
       <ion-grid>
+        <ion-row [hidden] = "!showDiscountMessage">
+          <ion-col><p style="font-size: 10px;" color="danger">{{discount}}<p></ion-col>
+        </ion-row>
         <ion-row>
           <ion-col col-4>
-            <b>Quantidade total</b>
+            <b style="font-size:12px;">Quantidade</b>
           </ion-col>
-          <ion-col col-2>
-            <b> {{ sumQty }} </b>
+          <ion-col col-8 style="text-align: right;">
+            {{ sumQty }}
           </ion-col>
-          <ion-col col-3>
-            <b>Valor Total</b>
+        </ion-row>
+        <ion-row>
+          <ion-col col-7>
+            <b style="font-size:12px;">Total sem desconto</b>
           </ion-col>
-          <ion-col col-3 style="text-align: right;">
-            R$ <b>{{ total }}</b>
+          <ion-col col-5 style="text-align: right;">
+            R$ {{ total }}
+          </ion-col>
+        </ion-row>
+        <ion-row [hidden] = "!showDiscountMessage">
+          <ion-col col-7>
+            <b style="font-size:12px;">Total com desconto</b>
+          </ion-col>
+          <ion-col col-5 style="text-align: right;">
+            R$ {{ percent }}
           </ion-col>
         </ion-row>
       </ion-grid>
